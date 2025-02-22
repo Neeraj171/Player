@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<ALOASK-NEW-LINE-TAG><html lang="en">
+<ALOASK-NEW-LINE-TAG><head>
+<ALOASK-NEW-LINE-TAG>  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<ALOASK-NEW-LINE-TAG>  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<ALOASK-NEW-LINE-TAG>  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<ALOASK-NEW-LINE-TAG><title>Player</title>
+<ALOASK-NEW-LINE-TAG>  <link rel="shortcut icon" type="image/x-icon" href="https://i.postimg.cc/YC3Npf10/image.webp">
+<ALOASK-NEW-LINE-TAG>   <link rel="stylesheet" href="Player.css">
+<ALOASK-NEW-LINE-TAG></head>
+<ALOASK-NEW-LINE-TAG>
+<ALOASK-NEW-LINE-TAG><body>  
+<ALOASK-NEW-LINE-TAG>	<script src="https://cdn.jwplayer.com/libraries/SAHhwvZq.js"></script>
+<ALOASK-NEW-LINE-TAG><script> jwplayer.defaults = jwDefaults; </script>
+<ALOASK-NEW-LINE-TAG>    <div id="jwplayerDiv"></div>
+<ALOASK-NEW-LINE-TAG>    <script>
+<ALOASK-NEW-LINE-TAG>        const queryParams = new URLSearchParams(window.location.search);
+<ALOASK-NEW-LINE-TAG>        const mpdLink = queryParams.get('mpd');
+<ALOASK-NEW-LINE-TAG>        const m3u8Link = queryParams.get('m3u8');
+<ALOASK-NEW-LINE-TAG>        const keyId = queryParams.get('keyId');
+<ALOASK-NEW-LINE-TAG>        const key = queryParams.get('key');
+<ALOASK-NEW-LINE-TAG>
+<ALOASK-NEW-LINE-TAG>        function playMedia() {
+<ALOASK-NEW-LINE-TAG>            let playerConfig = {
+<ALOASK-NEW-LINE-TAG>            	
+<ALOASK-NEW-LINE-TAG>            skin: {
+<ALOASK-NEW-LINE-TAG>       name: "Jackal",
+<ALOASK-NEW-LINE-TAG>       active: "RED", /* kuch bhi colour dalke experiment kro*/
+<ALOASK-NEW-LINE-TAG>       inactive: "white",/* kuch bhi colour dalke experiment kro*/
+<ALOASK-NEW-LINE-TAG>       background: "black"/* kuch bhi colour dalke experiment kro*/
+<ALOASK-NEW-LINE-TAG>    },
+<ALOASK-NEW-LINE-TAG>                "autostart": true,
+<ALOASK-NEW-LINE-TAG>                "preload": "none",
+<ALOASK-NEW-LINE-TAG>                "repeat": true,
+<ALOASK-NEW-LINE-TAG>                "Volume": "100",
+<ALOASK-NEW-LINE-TAG>                "mute": false,
+<ALOASK-NEW-LINE-TAG>                "stretching": "exactfit",
+<ALOASK-NEW-LINE-TAG>                "width": "100%",
+<ALOASK-NEW-LINE-TAG>                "cast": {},
+<ALOASK-NEW-LINE-TAG>                "setPip": false
+<ALOASK-NEW-LINE-TAG>            };
+<ALOASK-NEW-LINE-TAG>
+<ALOASK-NEW-LINE-TAG>            if (mpdLink) {
+<ALOASK-NEW-LINE-TAG>                playerConfig = {
+<ALOASK-NEW-LINE-TAG>                    ...playerConfig,
+<ALOASK-NEW-LINE-TAG>                    file: mpdLink,
+<ALOASK-NEW-LINE-TAG>                    type: "dash",
+<ALOASK-NEW-LINE-TAG>                    drm: {
+<ALOASK-NEW-LINE-TAG>                        clearkey: {
+<ALOASK-NEW-LINE-TAG>                            key: key,
+<ALOASK-NEW-LINE-TAG>                            keyId: keyId
+<ALOASK-NEW-LINE-TAG>                        }
+<ALOASK-NEW-LINE-TAG>                    }
+<ALOASK-NEW-LINE-TAG>                };
+<ALOASK-NEW-LINE-TAG>            } else if (m3u8Link) {
+<ALOASK-NEW-LINE-TAG>                playerConfig = {
+<ALOASK-NEW-LINE-TAG>                    ...playerConfig,
+<ALOASK-NEW-LINE-TAG>                    file: m3u8Link,
+<ALOASK-NEW-LINE-TAG>                    type: "hls",
+<ALOASK-NEW-LINE-TAG>                    drm: {}
+<ALOASK-NEW-LINE-TAG>                };
+<ALOASK-NEW-LINE-TAG>            }
+<ALOASK-NEW-LINE-TAG>
+<ALOASK-NEW-LINE-TAG>            const playerInstance = jwplayer('jwplayerDiv').setup(playerConfig);
+<ALOASK-NEW-LINE-TAG>        }
+<ALOASK-NEW-LINE-TAG>
+<ALOASK-NEW-LINE-TAG>        window.onload = playMedia;
+<ALOASK-NEW-LINE-TAG>    </script>
+<ALOASK-NEW-LINE-TAG><div id="loading" class="loading">
+<ALOASK-NEW-LINE-TAG>    <div class="loading-text">
+<ALOASK-NEW-LINE-TAG>      <span class="loading-text-words">N</span>
+<ALOASK-NEW-LINE-TAG>      <span class="loading-text-words">E</span>
+<ALOASK-NEW-LINE-TAG>      <span class="loading-text-words">E</span>
+<ALOASK-NEW-LINE-TAG>      <span class="loading-text-words">R</span>
+<ALOASK-NEW-LINE-TAG>      <span class="loading-text-words">A</span>
+<ALOASK-NEW-LINE-TAG>      <span class="loading-text-words">J</span>
+<ALOASK-NEW-LINE-TAG>    </div>
+<ALOASK-NEW-LINE-TAG></div>
+<ALOASK-NEW-LINE-TAG>
+<ALOASK-NEW-LINE-TAG><script>
+<ALOASK-NEW-LINE-TAG>setTimeout(videovisible, 5000)
+<ALOASK-NEW-LINE-TAG>function videovisible() {
+<ALOASK-NEW-LINE-TAG>    document.getElementById('loading').style.display = 'none'
+<ALOASK-NEW-LINE-TAG>}
+<ALOASK-NEW-LINE-TAG></script> 
+<ALOASK-NEW-LINE-TAG>
+<ALOASK-NEW-LINE-TAG></body>
+<ALOASK-NEW-LINE-TAG></html>
+<ALOASK-NEW-LINE-TAG>
